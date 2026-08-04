@@ -1,0 +1,123 @@
+---
+---
+<header class="sticky top-0 z-40 w-full border-b border-slate-200/60 bg-white/95 backdrop-blur-sm transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo Section -->
+      <div class="flex-shrink-0 flex items-center gap-2">
+        <a href="/" class="flex items-center gap-2 group">
+          <div class="h-9 w-9 rounded-lg bg-brand-obsidian flex items-center justify-center shadow-md border border-slate-800 group-hover:scale-105 transition-transform">
+            <span class="text-white font-extrabold text-lg">S</span>
+          </div>
+          <span class="text-xl font-bold tracking-tight text-brand-obsidian flex items-center gap-1.5">
+            ServePoint
+            <span class="flex h-2.5 w-2.5 relative">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-emerald opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-emerald"></span>
+            </span>
+          </span>
+        </a>
+      </div>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#fitur" class="text-sm font-semibold text-slate-600 hover:text-brand-obsidian transition-colors">Fitur</a>
+        <a href="#ekosistem" class="text-sm font-semibold text-slate-600 hover:text-brand-obsidian transition-colors">Ekosistem</a>
+        <a href="#roi-kalkulator" class="text-sm font-semibold text-slate-600 hover:text-brand-obsidian transition-colors">Kalkulator ROI</a>
+        <a href="#perbandingan" class="text-sm font-semibold text-slate-600 hover:text-brand-obsidian transition-colors">Perbandingan</a>
+        <a href="#harga" class="text-sm font-semibold text-slate-600 hover:text-brand-obsidian transition-colors">Harga</a>
+        <a href="#faq" class="text-sm font-semibold text-slate-600 hover:text-brand-obsidian transition-colors">FAQ</a>
+      </nav>
+
+      <!-- Desktop Call to Action Buttons -->
+      <div class="hidden md:flex items-center gap-4">
+        <a 
+          href="#cta-form" 
+          class="text-sm font-semibold text-slate-600 hover:text-brand-obsidian transition-colors px-4 py-2"
+        >
+          Sign In
+        </a>
+        <a 
+          href="#cta-form" 
+          class="inline-flex items-center justify-center text-sm font-semibold text-white bg-brand-amber hover:bg-brand-amber-hover px-5 py-2.5 rounded-xl shadow-sm transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+        >
+          Minta Demo Gratis
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <div class="flex md:hidden">
+        <button 
+          type="button" 
+          id="mobile-menu-button"
+          class="inline-flex items-center justify-center p-2 rounded-xl text-slate-600 hover:text-brand-obsidian hover:bg-slate-100 focus:outline-none transition-colors"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Buka menu utama</span>
+          <svg class="h-6 w-6" id="menu-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+          <svg class="hidden h-6 w-6" id="close-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Panels -->
+  <div class="hidden md:hidden border-t border-slate-100 bg-white" id="mobile-menu">
+    <div class="px-4 pt-2 pb-4 space-y-1">
+      <a href="#fitur" class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-brand-obsidian hover:bg-slate-50 transition-colors">Fitur</a>
+      <a href="#ekosistem" class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-brand-obsidian hover:bg-slate-50 transition-colors">Ekosistem</a>
+      <a href="#roi-kalkulator" class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-brand-obsidian hover:bg-slate-50 transition-colors">Kalkulator ROI</a>
+      <a href="#perbandingan" class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-brand-obsidian hover:bg-slate-50 transition-colors">Perbandingan</a>
+      <a href="#harga" class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-brand-obsidian hover:bg-slate-50 transition-colors">Harga</a>
+      <a href="#faq" class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-brand-obsidian hover:bg-slate-50 transition-colors">FAQ</a>
+      <div class="pt-4 border-t border-slate-100 flex flex-col gap-2.5">
+        <a 
+          href="#cta-form" 
+          class="flex w-full items-center justify-center text-base font-medium text-slate-600 hover:text-brand-obsidian hover:bg-slate-50 py-2.5 rounded-xl transition-colors"
+        >
+          Sign In
+        </a>
+        <a 
+          href="#cta-form" 
+          class="flex w-full items-center justify-center text-base font-semibold text-white bg-brand-amber hover:bg-brand-amber-hover py-3 rounded-xl shadow-sm transition-all duration-200"
+        >
+          Minta Demo Gratis
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const button = document.getElementById('mobile-menu-button');
+  const menu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  if (button && menu && menuIcon && closeIcon) {
+    button.addEventListener('click', () => {
+      const expanded = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', String(!expanded));
+      
+      menu.classList.toggle('hidden');
+      menuIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    });
+
+    // Close menu when clicking a link
+    const links = menu.querySelectorAll('a');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.add('hidden');
+        menuIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+        button.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+</script>
