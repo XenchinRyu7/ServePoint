@@ -45,8 +45,11 @@ export default function RoiCalculator() {
         
         {/* Header */}
         <div class="max-w-3xl mx-auto text-center mb-16 space-y-4">
-          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/60 text-brand-emerald text-xs font-bold uppercase tracking-wider">
-            📊 KALKULATOR ROI
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/60 text-brand-emerald text-xs font-bold uppercase tracking-wider">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-3.5 h-3.5 text-brand-emerald">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25" />
+            </svg>
+            KALKULATOR ROI
           </div>
           <h2 class="text-3xl md:text-4xl font-extrabold text-brand-obsidian tracking-tight">
             Hitung Potensi Penghematan Kafe Anda

@@ -5,51 +5,39 @@ import Navbar from '../components/Navbar.astro';
 import Hero from '../components/Hero.astro';
 import Logos from '../components/Logos.astro';
 import BentoFeatures from '../components/BentoFeatures.astro';
+import GymHealthPlus from '../components/GymHealthPlus.astro';
 import EcosystemTabs from '../components/EcosystemTabs.jsx';
-import RoiCalculator from '../components/RoiCalculator.jsx';
-import Comparison from '../components/Comparison.astro';
-import Pricing from '../components/Pricing.jsx';
-import Faq from '../components/Faq.jsx';
 import CtaBanner from '../components/CtaBanner.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout>
-  <!-- Global Top Announcement Bar -->
+<Layout title="ServePoint AI - #1 Voice AI Table Assistant & Custom RAG di Indonesia">
+  <!-- Top Announcement Bar -->
   <Announcement />
 
-  <!-- Navigation Bar -->
+  <!-- Multi-Page Floating Navbar -->
   <Navbar />
 
   <main class="flex-grow">
-    <!-- Hero Section with Left Text & Right Tablet Mockup Island -->
+    <!-- Hero Section with Left Text & Right Interactive Tablet Mockup -->
     <Hero />
 
     <!-- Partner Logos Cloud -->
     <Logos />
 
-    <!-- Dribbble-style Bento Capabilities Grid -->
+    <!-- Bento Capabilities Overview Grid -->
     <BentoFeatures />
+
+    <!-- Dedicated Gym, Fitness & Healthy Lifestyle Value Proposition Section -->
+    <GymHealthPlus />
 
     <!-- Ecosystem Tab Switcher (Tablet App, KDS, Owner Dashboard) -->
     <EcosystemTabs client:visible />
 
-    <!-- Interactive ROI Calculator Widget -->
-    <RoiCalculator client:visible />
-
-    <!-- Comparison Table (Conventional vs QR Scanner vs ServePoint) -->
-    <Comparison />
-
-    <!-- Pricing Packages Grid with Monthly/Annual Switcher -->
-    <Pricing client:visible />
-
-    <!-- FAQ Accordion Dropdowns -->
-    <Faq client:visible />
-
-    <!-- Leads Capture CTA Form with Success State transition -->
+    <!-- Leads Capture CTA Form -->
     <CtaBanner />
   </main>
 
-  <!-- Footnotes and links -->
+  <!-- Footnotes and navigation links -->
   <Footer />
 </Layout>

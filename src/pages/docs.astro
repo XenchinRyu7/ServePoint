@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Announcement from '../components/Announcement.astro';
+import Navbar from '../components/Navbar.astro';
+import FaqComponent from '../components/Faq.jsx';
+import CtaBanner from '../components/CtaBanner.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Documentation & FAQ - ServePoint AI">
+  <Announcement />
+  <Navbar />
+
+  <main class="flex-grow">
+    <!-- Page Header Banner -->
+    <section class="py-16 md:py-24 bg-slate-900 text-white relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-purple-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 relative z-10">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-purple-400 text-xs font-mono font-bold uppercase tracking-wider">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5 text-purple-400">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+          </svg>
+          DOCUMENTATION & FAQ
+        </div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
+          Pusat Bantuan & <span class="text-purple-400">Panduan Teknis</span>
+        </h1>
+        <p class="text-slate-400 text-base md:text-lg max-w-2xl mx-auto font-medium">
+          Panduan integrasi POS, konfigurasi Custom RAG admin, dan jawaban atas pertanyaan teknis seputar sistem ServePoint.
+        </p>
+      </div>
+    </section>
+
+    <!-- POS Integration Documentation Cards Grid -->
+    <section class="py-16 bg-slate-50 border-b border-slate-200/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center mb-12">
+          <span class="text-xs font-bold text-purple-600 uppercase tracking-wider bg-purple-50 px-3 py-1 rounded-full border border-purple-100">
+            INTEGRASI POS OFFICIAL
+          </span>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-brand-obsidian mt-3">
+            Panduan Menghubungkan Kasir Resto Anda
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Card 1: Moka POS -->
+          <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-3">
+            <div class="h-10 w-10 rounded-xl bg-purple-50 text-purple-600 font-bold flex items-center justify-center text-xs">
+              MOKA
+            </div>
+            <h3 class="text-lg font-bold text-brand-obsidian">Integrasi Moka POS Cloud</h3>
+            <p class="text-xs text-slate-500 leading-relaxed font-medium">
+              Cukup masukkan API Key dari dasbor Moka POS Anda. Kategori menu, varian harga, dan status meja otomatis tersinkron dalam 2 menit.
+            </p>
+            <a href="#faq" class="text-xs font-bold text-purple-600 hover:underline inline-block pt-1">Lihat Langkah Setup &rarr;</a>
+          </div>
+
+          <!-- Card 2: Pawoon POS -->
+          <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-3">
+            <div class="h-10 w-10 rounded-xl bg-blue-50 text-blue-600 font-bold flex items-center justify-center text-xs">
+              PAWOON
+            </div>
+            <h3 class="text-lg font-bold text-brand-obsidian">Integrasi Pawoon Kasir</h3>
+            <p class="text-xs text-slate-500 leading-relaxed font-medium">
+              Hubungkan akun Pawoon Pro Anda untuk pengiriman tiket dapur (KDS) dan cetak billing otomatis kurang dari 1 detik.
+            </p>
+            <a href="#faq" class="text-xs font-bold text-blue-600 hover:underline inline-block pt-1">Lihat Langkah Setup &rarr;</a>
+          </div>
+
+          <!-- Card 3: Custom API -->
+          <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-3">
+            <div class="h-10 w-10 rounded-xl bg-emerald-50 text-brand-emerald font-bold flex items-center justify-center text-xs">
+              API
+            </div>
+            <h3 class="text-lg font-bold text-brand-obsidian">Dokumentasi REST API Custom</h3>
+            <p class="text-xs text-slate-500 leading-relaxed font-medium">
+              Untuk resto skala besar (Chain/Franchise) yang memakai POS internal, gunakan webhook & endpoint RESTful API resmi ServePoint.
+            </p>
+            <a href="#faq" class="text-xs font-bold text-brand-emerald hover:underline inline-block pt-1">Buka Spesifikasi API &rarr;</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Full FAQ Component -->
+    <FaqComponent client:visible />
+
+    <!-- CTA Form Banner -->
+    <CtaBanner />
+  </main>
+
+  <Footer />
+</Layout>

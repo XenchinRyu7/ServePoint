@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Announcement from '../components/Announcement.astro';
+import Navbar from '../components/Navbar.astro';
+import BentoFeatures from '../components/BentoFeatures.astro';
+import GymHealthPlus from '../components/GymHealthPlus.astro';
+import EcosystemTabs from '../components/EcosystemTabs.jsx';
+import Comparison from '../components/Comparison.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Product & Solutions - ServePoint AI">
+  <Announcement />
+  <Navbar />
+
+  <main class="flex-grow">
+    <!-- Page Header Banner -->
+    <section class="py-16 md:py-24 bg-slate-900 text-white relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-brand-emerald/10 blur-[120px] rounded-full pointer-events-none"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 relative z-10">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-emerald-400 text-xs font-mono font-bold uppercase tracking-wider">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5 text-emerald-400">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+          </svg>
+          PRODUCT & SOLUTIONS
+        </div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
+          Platform Restoran Pintar Berbasis <span class="text-brand-emerald">Voice AI & Custom RAG</span>
+        </h1>
+        <p class="text-slate-400 text-base md:text-lg max-w-2xl mx-auto font-medium">
+          Jelajahi seluruh fitur utama ServePoint: asisten pemesanan suara meja, transparansi gizi kalori untuk pelanggan gym, serta dasbor kustomisasi admin.
+        </p>
+      </div>
+    </section>
+
+    <!-- 1. Bento Capabilities -->
+    <BentoFeatures />
+
+    <!-- 2. Gym & Healthy Lifestyle Magnet Section -->
+    <GymHealthPlus />
+
+    <!-- 3. Full Ecosystem Switcher -->
+    <EcosystemTabs client:visible />
+
+    <!-- 4. Comparison Table -->
+    <Comparison />
+  </main>
+
+  <Footer />
+</Layout>

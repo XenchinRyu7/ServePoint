@@ -119,7 +119,7 @@ export default function DeviceMockup() {
   const handleCallStaff = () => {
     if (staffCalled) return;
     setStaffCalled(true);
-    setNotification('🔔 Pelayan telah dipanggil ke Meja 12. Mohon tunggu sebentar.');
+    setNotification('Pelayan telah dipanggil ke Meja 12. Mohon tunggu sebentar.');
     setTimeout(() => {
       setNotification(null);
       setStaffCalled(false);
@@ -179,7 +179,7 @@ export default function DeviceMockup() {
 
           {wifiShow && (
             <div class="bg-brand-amber text-white text-xs font-semibold py-2 px-4 text-center animate-fade-in flex flex-col justify-center items-center">
-              <span>🔑 WiFi: <strong class="underline">ServePoint_Guest</strong></span>
+              <span class="flex items-center gap-1">WiFi: <strong class="underline">ServePoint_Guest</strong></span>
               <span>Password: <strong>kopiAI2026</strong></span>
             </div>
           )}
@@ -292,7 +292,7 @@ export default function DeviceMockup() {
                 </div>
                 <div class="flex flex-col gap-1.5">
                   <span class="text-[9px] text-center text-slate-500 tracking-wider">
-                    {step === 5 ? 'Status: 👨‍🍳 Diproses Dapur' : 'Status: Menunggu Konfirmasi'}
+                    {step === 5 ? 'Status: Diproses Dapur' : 'Status: Menunggu Konfirmasi'}
                   </span>
                   <div class="w-full h-1 bg-slate-800 rounded-full overflow-hidden">
                     <div 
@@ -310,19 +310,25 @@ export default function DeviceMockup() {
             <button 
               onClick={handleCallStaff}
               disabled={staffCalled}
-              class={`flex-1 py-2 px-3 rounded-lg text-[10px] font-bold tracking-wider uppercase transition-all duration-200 active:scale-95 ${
+              class={`flex-1 py-2 px-3 rounded-lg text-[10px] font-bold tracking-wider uppercase transition-all duration-200 active:scale-95 flex items-center justify-center gap-1 ${
                 staffCalled 
                   ? 'bg-slate-850 text-slate-500 border border-slate-800 cursor-not-allowed'
                   : 'bg-slate-950 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-600'
               }`}
             >
-              🔔 Panggil Pelayan
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-3.5 h-3.5 text-slate-400">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.008v.008H9V10zm3 0h.008v.008H12V10zm3 0h.008v.008H15V10z" />
+              </svg>
+              Panggil Pelayan
             </button>
             <button 
               onClick={handleWifiInfo}
-              class="flex-1 bg-slate-950 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-600 py-2 px-3 rounded-lg text-[10px] font-bold tracking-wider uppercase transition-all duration-200 active:scale-95"
+              class="flex-1 bg-slate-950 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-600 py-2 px-3 rounded-lg text-[10px] font-bold tracking-wider uppercase transition-all duration-200 active:scale-95 flex items-center justify-center gap-1"
             >
-              🔑 Info Wi-Fi
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-3.5 h-3.5 text-slate-400">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.286 7.286a6 6 0 018.428 0m-6.314 2.121a3 3 0 014.2 0m-2.1 2.121h.01" />
+              </svg>
+              Info Wi-Fi
             </button>
           </div>
 

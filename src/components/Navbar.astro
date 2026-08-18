@@ -1,10 +1,14 @@
 ---
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.endsWith('/') && pathname.length > 1 ? pathname.slice(0, -1) : pathname;
 ---
-<header class="sticky top-0 z-40 w-full border-b border-slate-200/60 bg-white/95 backdrop-blur-sm transition-all duration-300">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-20">
-      <!-- Logo Section -->
-      <div class="flex-shrink-0 flex items-center gap-2">
+<header class="sticky top-3 z-50 w-full px-4 sm:px-6 lg:px-8 transition-all duration-300">
+  <div class="max-w-7xl mx-auto">
+    <!-- Floating Glassmorphism Container -->
+    <div class="bg-white/90 backdrop-blur-md border border-slate-200/80 rounded-2xl shadow-sm px-4 sm:px-6 py-2.5 flex items-center justify-between transition-all duration-300">
+      
+      <!-- Brand Logo Section -->
+      <div class="flex items-center gap-3">
         <a href="/" class="flex items-center gap-2 group">
           <div class="h-9 w-9 rounded-lg bg-brand-obsidian flex items-center justify-center shadow-md border border-slate-800 group-hover:scale-105 transition-transform">
             <span class="text-white font-extrabold text-lg">S</span>
@@ -19,34 +23,175 @@
         </a>
       </div>
 
-      <!-- Desktop Nav Links -->
-      <nav class="hidden md:flex items-center gap-8">
-        <a href="#fitur" class="text-sm font-semibold text-slate-600 hover:text-brand-obsidian transition-colors">Fitur</a>
-        <a href="#ekosistem" class="text-sm font-semibold text-slate-600 hover:text-brand-obsidian transition-colors">Ekosistem</a>
-        <a href="#roi-kalkulator" class="text-sm font-semibold text-slate-600 hover:text-brand-obsidian transition-colors">Kalkulator ROI</a>
-        <a href="#perbandingan" class="text-sm font-semibold text-slate-600 hover:text-brand-obsidian transition-colors">Perbandingan</a>
-        <a href="#harga" class="text-sm font-semibold text-slate-600 hover:text-brand-obsidian transition-colors">Harga</a>
-        <a href="#faq" class="text-sm font-semibold text-slate-600 hover:text-brand-obsidian transition-colors">FAQ</a>
+      <!-- Desktop Nav Links (YC Startup 6-Item Structure) -->
+      <nav class="hidden lg:flex items-center gap-1">
+        
+        <!-- 1. HOME -->
+        <a 
+          href="/" 
+          class={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all duration-200 ${
+            currentPath === '' || currentPath === '/' 
+              ? 'text-brand-emerald bg-emerald-50 border border-emerald-100/80' 
+              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80'
+          }`}
+        >
+          Home
+        </a>
+
+        <!-- 2. PRODUCT (Dropdown Menu) -->
+        <div class="relative group" id="product-dropdown-container">
+          <a 
+            href="/product"
+            class={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all duration-200 flex items-center gap-1 ${
+              currentPath.startsWith('/product') 
+                ? 'text-brand-emerald bg-emerald-50 border border-emerald-100/80' 
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80'
+            }`}
+          >
+            Product
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-3 h-3 text-slate-400 group-hover:text-slate-700 group-hover:rotate-180 transition-transform duration-200">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+          </a>
+
+          <!-- Dropdown Popover Card -->
+          <div 
+            id="product-dropdown-menu"
+            class="absolute left-0 top-full mt-2 w-80 sm:w-96 bg-white/95 backdrop-blur-xl rounded-2xl border border-slate-200/90 shadow-xl p-3 grid grid-cols-1 gap-1.5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-1 group-hover:translate-y-0 z-50"
+          >
+            <div class="px-3 py-1.5 border-b border-slate-100 flex items-center justify-between">
+              <span class="text-[10px] font-mono uppercase tracking-wider font-bold text-slate-400">Solusi Platform ServePoint</span>
+              <a href="/product" class="text-[10px] font-bold text-brand-emerald hover:underline">Overview Produk &rarr;</a>
+            </div>
+
+            <!-- Item 1: Fitur Voice AI -->
+            <a href="/product#fitur" class="p-2 rounded-xl hover:bg-slate-50 transition-colors flex items-start gap-3 group/item">
+              <div class="h-8 w-8 rounded-lg bg-emerald-50 text-brand-emerald border border-emerald-100 flex items-center justify-center shrink-0 group-hover/item:bg-brand-emerald group-hover/item:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+                </svg>
+              </div>
+              <div>
+                <div class="text-xs font-bold text-slate-800 group-hover/item:text-brand-emerald transition-colors">Voice AI Table Assistant</div>
+                <div class="text-[10px] text-slate-500 font-medium leading-snug">Pesan via suara langsung di meja makan tanpa antre.</div>
+              </div>
+            </a>
+
+            <!-- Item 2: Custom RAG & Admin -->
+            <a href="/product#fitur" class="p-2 rounded-xl hover:bg-slate-50 transition-colors flex items-start gap-3 group/item">
+              <div class="h-8 w-8 rounded-lg bg-amber-50 text-brand-amber border border-amber-100 flex items-center justify-center shrink-0 group-hover/item:bg-brand-amber group-hover/item:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+                </svg>
+              </div>
+              <div>
+                <div class="text-xs font-bold text-slate-800 group-hover/item:text-brand-amber transition-colors">Custom RAG & Admin Data</div>
+                <div class="text-[10px] text-slate-500 font-medium leading-snug">Upload file gizi/resep & atur flow respon AI mandiri.</div>
+              </div>
+            </a>
+
+            <!-- Item 3: Gizi & Gym -->
+            <a href="/product#gym-health" class="p-2 rounded-xl hover:bg-slate-50 transition-colors flex items-start gap-3 group/item bg-emerald-50/40 border border-emerald-100/60">
+              <div class="h-8 w-8 rounded-lg bg-emerald-100 text-brand-emerald border border-emerald-200 flex items-center justify-center shrink-0 group-hover/item:bg-brand-emerald group-hover/item:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z" />
+                </svg>
+              </div>
+              <div>
+                <div class="text-xs font-bold text-emerald-900 group-hover/item:text-brand-emerald transition-colors flex items-center gap-1.5">
+                  Solusi Gym & Healthy Lifestyle
+                  <span class="text-[8px] bg-emerald-200 text-emerald-800 font-extrabold px-1 rounded">HOT</span>
+                </div>
+                <div class="text-[10px] text-slate-600 font-medium leading-snug">Informasi kalori, protein & gizi real-time di meja.</div>
+              </div>
+            </a>
+
+            <!-- Item 4: Ekosistem Hardware -->
+            <a href="/product#ekosistem" class="p-2 rounded-xl hover:bg-slate-50 transition-colors flex items-start gap-3 group/item">
+              <div class="h-8 w-8 rounded-lg bg-purple-50 text-purple-600 border border-purple-100 flex items-center justify-center shrink-0 group-hover/item:bg-purple-600 group-hover/item:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5" />
+                </svg>
+              </div>
+              <div>
+                <div class="text-xs font-bold text-slate-800 group-hover/item:text-purple-600 transition-colors">Ekosistem Platform</div>
+                <div class="text-[10px] text-slate-500 font-medium leading-snug">Tablet Meja, Kitchen Display (KDS), & Owner Dashboard.</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- 3. PRICING -->
+        <a 
+          href="/pricing" 
+          class={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all duration-200 ${
+            currentPath === '/pricing' 
+              ? 'text-brand-emerald bg-emerald-50 border border-emerald-100/80' 
+              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80'
+          }`}
+        >
+          Pricing
+        </a>
+
+        <!-- 4. DOCS -->
+        <a 
+          href="/docs" 
+          class={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all duration-200 ${
+            currentPath === '/docs' 
+              ? 'text-brand-emerald bg-emerald-50 border border-emerald-100/80' 
+              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80'
+          }`}
+        >
+          Docs
+        </a>
+
+        <!-- 5. ABOUT -->
+        <a 
+          href="/about" 
+          class={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all duration-200 ${
+            currentPath === '/about' 
+              ? 'text-brand-emerald bg-emerald-50 border border-emerald-100/80' 
+              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80'
+          }`}
+        >
+          About
+        </a>
+
+        <!-- 6. CONTACT -->
+        <a 
+          href="/contact" 
+          class={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all duration-200 ${
+            currentPath === '/contact' 
+              ? 'text-brand-emerald bg-emerald-50 border border-emerald-100/80' 
+              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80'
+          }`}
+        >
+          Contact
+        </a>
+
       </nav>
 
-      <!-- Desktop Call to Action Buttons -->
-      <div class="hidden md:flex items-center gap-4">
+      <!-- Desktop Action CTAs -->
+      <div class="hidden sm:flex items-center gap-3">
         <a 
           href="#cta-form" 
-          class="text-sm font-semibold text-slate-600 hover:text-brand-obsidian transition-colors px-4 py-2"
+          class="text-xs font-bold text-slate-600 hover:text-brand-obsidian transition-colors px-3 py-2"
         >
           Sign In
         </a>
         <a 
           href="#cta-form" 
-          class="inline-flex items-center justify-center text-sm font-semibold text-white bg-brand-amber hover:bg-brand-amber-hover px-5 py-2.5 rounded-xl shadow-sm transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+          class="inline-flex items-center justify-center text-xs font-extrabold text-white bg-gradient-to-r from-brand-amber via-amber-500 to-brand-amber hover:brightness-105 px-4.5 py-2.5 rounded-xl shadow-sm transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] border border-amber-600/20"
         >
           Minta Demo Gratis
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-3.5 h-3.5 ml-1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
         </a>
       </div>
 
-      <!-- Mobile Hamburger Button -->
-      <div class="flex md:hidden">
+      <!-- Mobile Hamburger Menu Button -->
+      <div class="flex lg:hidden">
         <button 
           type="button" 
           id="mobile-menu-button"
@@ -63,33 +208,69 @@
           </svg>
         </button>
       </div>
-    </div>
-  </div>
 
-  <!-- Mobile Menu Panels -->
-  <div class="hidden md:hidden border-t border-slate-100 bg-white" id="mobile-menu">
-    <div class="px-4 pt-2 pb-4 space-y-1">
-      <a href="#fitur" class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-brand-obsidian hover:bg-slate-50 transition-colors">Fitur</a>
-      <a href="#ekosistem" class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-brand-obsidian hover:bg-slate-50 transition-colors">Ekosistem</a>
-      <a href="#roi-kalkulator" class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-brand-obsidian hover:bg-slate-50 transition-colors">Kalkulator ROI</a>
-      <a href="#perbandingan" class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-brand-obsidian hover:bg-slate-50 transition-colors">Perbandingan</a>
-      <a href="#harga" class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-brand-obsidian hover:bg-slate-50 transition-colors">Harga</a>
-      <a href="#faq" class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-brand-obsidian hover:bg-slate-50 transition-colors">FAQ</a>
-      <div class="pt-4 border-t border-slate-100 flex flex-col gap-2.5">
+    </div>
+
+    <!-- Mobile Dropdown Panel -->
+    <div class="hidden lg:hidden mt-2 rounded-2xl border border-slate-200/80 bg-white/95 backdrop-blur-md shadow-lg p-4 space-y-3 transition-all duration-300" id="mobile-menu">
+      
+      <a href="/" class="block px-3 py-2 rounded-lg text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors">Home</a>
+
+      <!-- Product Submenu Section -->
+      <div class="space-y-1.5 pl-2 border-l-2 border-slate-200">
+        <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-2">Product & Features</div>
+        <a href="/product" class="block px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-slate-50 transition-colors flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5 text-emerald-600">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+          </svg>
+          Voice AI Table Assistant
+        </a>
+        <a href="/product#fitur" class="block px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-slate-50 transition-colors flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5 text-amber-600">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+          </svg>
+          Custom RAG & Data Upload
+        </a>
+        <a href="/product#gym-health" class="block px-3 py-1.5 rounded-lg text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-100 transition-colors flex items-center justify-between">
+          <span class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5 text-emerald-600">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z" />
+            </svg>
+            Gizi & Gym Lifestyle
+          </span>
+          <span class="text-[8px] bg-emerald-200 text-emerald-800 px-1 py-0.5 rounded font-extrabold">HOT</span>
+        </a>
+        <a href="/product#ekosistem" class="block px-3 py-1.5 rounded-lg text-xs font-bold text-slate-700 hover:bg-slate-50 transition-colors flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5 text-purple-600">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5" />
+          </svg>
+          Ekosistem Platform
+        </a>
+      </div>
+
+      <div class="border-t border-slate-100 pt-2 space-y-1">
+        <a href="/pricing" class="block px-3 py-2 rounded-lg text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors">Pricing</a>
+        <a href="/docs" class="block px-3 py-2 rounded-lg text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors">Docs & FAQ</a>
+        <a href="/about" class="block px-3 py-2 rounded-lg text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors">About ServePoint</a>
+        <a href="/contact" class="block px-3 py-2 rounded-lg text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors">Contact Us</a>
+      </div>
+      
+      <div class="pt-3 border-t border-slate-100 flex flex-col gap-2">
         <a 
           href="#cta-form" 
-          class="flex w-full items-center justify-center text-base font-medium text-slate-600 hover:text-brand-obsidian hover:bg-slate-50 py-2.5 rounded-xl transition-colors"
+          class="flex w-full items-center justify-center text-sm font-bold text-slate-700 hover:bg-slate-50 py-2.5 rounded-xl transition-colors border border-slate-200"
         >
           Sign In
         </a>
         <a 
           href="#cta-form" 
-          class="flex w-full items-center justify-center text-base font-semibold text-white bg-brand-amber hover:bg-brand-amber-hover py-3 rounded-xl shadow-sm transition-all duration-200"
+          class="flex w-full items-center justify-center text-sm font-extrabold text-white bg-brand-amber hover:bg-brand-amber-hover py-3 rounded-xl shadow-sm transition-all duration-200"
         >
           Minta Demo Gratis
         </a>
       </div>
     </div>
+
   </div>
 </header>
 
@@ -109,7 +290,6 @@
       closeIcon.classList.toggle('hidden');
     });
 
-    // Close menu when clicking a link
     const links = menu.querySelectorAll('a');
     links.forEach(link => {
       link.addEventListener('click', () => {

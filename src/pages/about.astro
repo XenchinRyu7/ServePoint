@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Announcement from '../components/Announcement.astro';
+import Navbar from '../components/Navbar.astro';
+import AboutSection from '../components/AboutSection.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="About Us - ServePoint AI">
+  <Announcement />
+  <Navbar />
+
+  <main class="flex-grow">
+    <!-- Page Header Banner -->
+    <section class="py-16 md:py-24 bg-slate-900 text-white relative overflow-hidden">
+      <div class="absolute top-0 left-0 w-96 h-96 bg-brand-emerald/10 blur-[120px] rounded-full pointer-events-none"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 relative z-10">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-emerald-400 text-xs font-mono font-bold uppercase tracking-wider">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5 text-emerald-400">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z" />
+          </svg>
+          ABOUT SERVEPOINT
+        </div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
+          Memodernisasi Kuliner Indonesia dengan <span class="text-brand-emerald">Kecerdasan Buatan</span>
+        </h1>
+        <p class="text-slate-400 text-base md:text-lg max-w-2xl mx-auto font-medium">
+          Pelajari kisah perjalanan, visi misi, dan komitmen tim ServePoint dalam membangun ekosistem F&B yang lebih efisien dan transparan.
+        </p>
+      </div>
+    </section>
+
+    <!-- Main About Section Component -->
+    <AboutSection />
+  </main>
+
+  <Footer />
+</Layout>
